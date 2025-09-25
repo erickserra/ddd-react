@@ -1,0 +1,14 @@
+{
+  "Recipe Reference": "Référentiel Recette",
+  "identifiant": "Identifiant",
+  "Libelle": "Libellé",
+  "Categorie de recette": "Catégorie de recette",
+  "Thematique": "Thématique",
+  "Difficulte": "Difficulté",
+  "Temps de preparation": "Temps de préparation",
+  "noRowsLabel": "Aucun résultat",
+  "footerTotalRows": "Total de lignes",
+  "paginationRowsPerPage": "Lignes par page",
+  "footerRowSelected": "{{count}} ligne sélectionnée",
+  "Non renseigne": "Non renseigné"
+}

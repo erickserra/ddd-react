@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+echo "▶ unit tests + coverage (full suite)"
+echo "if you need to ignore this hook for quick fixes, use git push --no-verify"
+# --bail: fails upon first error
+# --ci: deactivates watch and makes the output stable
+npm run coverage
