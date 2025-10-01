@@ -1,69 +1,63 @@
-# React + TypeScript + Vite
+```mermaid
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+flowchart TD
+ A["**index.html**"]
 
-Currently, two official plugins are available:
+ subgraph B["**application**"]
+      B1["/main.tsx"]
+      B2["/app.tsx"]
+      subgraph U["**UI Layer**"]
+        U1["/Pages"]
+        U2["/components"]
+      end
+      B4["/hooks/usecases"]
+  end
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ subgraph C["**/data**"]
+        C1["/errors"]
+        C2["/usecases"]
+  end
 
-## Expanding the ESLint configuration
+ subgraph D["**/domain**"]
+        D1["/usecases"]
+        D2["/dtos"]
+        D3["/model"]
+  end
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+ subgraph L[".."]
+        L1["/lib"]
+        L3["/helpers"]
+  end
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+ subgraph s2["**src**"]
+        B
+        C
+        D
+        L
+  end
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+    %% Application flow
+    A --> B1
+    B1 --> B2
+    B2 --> U
+    U --> B4
+    B4 --> C2
+    C1 -.-> C2
+    C2 --> D
+    L --> D
+    L --> C
+    L --> B
+    
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+    %% Styling
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+      %% Styling: border colors
+      style A stroke:#2f9e44,stroke-width:3px,color:#2f9e44
+      style B stroke:#0077cc,stroke-width:3px
+      style C stroke:#0077cc,stroke-width:3px
+      style D stroke:#0077cc,stroke-width:3px
+      style L stroke:#0077cc,stroke-width:3px
+      style s2 stroke:#6741d9,stroke-width:4px
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
 ```
